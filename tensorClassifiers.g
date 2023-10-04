@@ -1,3 +1,16 @@
+##
+## GAP code to compute tensor classifiers for the example discussed in the paper
+##   "Tensor classifiers and applications"
+## by Heiko Dietrich and Willem A. de Graaf
+##
+## Load the file and the code will automatically compute tensor classifiers
+## and output the resulting non-inclusions. This happens for Sym^2(V);
+## at the end of the file, this can be changes to Sym^4(V) or Sym^6(V) as well
+##
+
+
+Display("You need to have the packages Singular, SLA, CoReLG, and Float installed");
+
 LoadPackage("singular");
 LoadPackage("SLA");
 LoadPackage("corelg");
@@ -9,14 +22,10 @@ SetFloats(MPFR);
 ######################################################################################################
 ######################################################################### methods from module.g
 DeclareProperty( "IsIrreducibleHWModule", IsAlgebraModule );
-
 DeclareAttribute( "HighestWeight", IsAlgebraModule );
-
 DeclareAttribute( "HighestWeightVector", IsAlgebraModule );
-
 DeclareOperation( "IsomorphismOfIrreducibleHWModules", [ IsAlgebraModule,
      IsAlgebraModule ] );
-
 
 InstallMethod( HighestWeightVector,
      "for an irreducible highest weight module",
@@ -1044,7 +1053,6 @@ local small, large, i, j, k,s,ii,jj,orb1,orb2;
 
 
          for s in [1..Size(small)] do
-	 Print("\n");
          for i in [1..Size(large)] do
            for j in [1..Size(large[i])] do
             if ForAny([1,2],x-> small[s][j][x]> large[i][j][x]) then
